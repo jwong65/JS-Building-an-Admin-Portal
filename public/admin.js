@@ -29,7 +29,11 @@ function renderBook(book) {
             <div class="card" style="width: 100%;">
                 <div class="card-body">
                     <h5 class="card-title">${book.title}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Available: ${book.quantity}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">Available: 
+                        <input type="number" value=${book.quantity}> </input>
+                        <button type="button">Submit</button>
+                    </h6>
+
                     <p class="card-text">${book.description}</p>
                 </div>
             </div>
