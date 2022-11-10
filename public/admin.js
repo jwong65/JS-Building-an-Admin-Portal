@@ -20,7 +20,7 @@ function renderBook(book) {
                     <h5 class="card-title">${book.title}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Available: 
                         <input id="book-quantity-${book.id}" type="number" value=${book.quantity}> </input>
-                        <button type="button" onclick="updateBook(${book.id})">Submit</button>
+                        <button type="button" onclick="updateBook(${book.id})">Save</button>
                     </h6>
                     <p class="card-text">${book.description}</p>
                 </div>
