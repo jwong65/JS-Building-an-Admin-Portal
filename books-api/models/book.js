@@ -6,6 +6,6 @@ let bookSchema = new mongoose.Schema({
     year: Number,
     quantity: Number,
     imageURL: String
-})
+}, {toJSON:{virtuals: true}})
 
 module.exports = mongoose.model('Book', bookSchema)
