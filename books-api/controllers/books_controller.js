@@ -71,10 +71,10 @@ router.get('/:id', (req, res)=>{
             })
         })
 })
-router.put(':/id', (req,res)=>{
+router.put('/:id', (req,res)=>{
     Book.findByIdAndUpdate(req.params.id, req.body)
-        .then(()=>{
-            res.redirect('/books')
+        .then((booksUpdated)=>{
+            res.json(booksUpdated)
         })
         .catch(err=>{
             res.status('404').json({
@@ -83,10 +83,21 @@ router.put(':/id', (req,res)=>{
         })
 })
 
-router.delete('/:id/delete', (req, res)=>{
+router.delete('/:id', (req, res)=>{
     Book.findByIdAndDelete(req.params.id)
     .then(bakerDelete=>{
-        res.status(303).redirect('/')
+        res.json(bakerDelete)
+    })
+    .catch(err=>{
+        res.status('404').json({
+            message:'404 Error'
+        })
+    })
+})
+router.post('/', (req, res)=>{
+    Book.create(req.body)
+    .then(createdBaker=>{
+        res.json(createdBaker)
     })
     .catch(err=>{
         res.status('404').json({
