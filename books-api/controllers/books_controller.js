@@ -40,7 +40,7 @@ books.get('/seed', (req, res) => {
 })
 
 router.get('/', async (req, res)=>{
-    Book.find()
+    db.Book.find()
     .then(foundBook=>{
         res.json(foundBook)
     })
@@ -51,6 +51,8 @@ router.get('/', async (req, res)=>{
     })
 })
 
-router.get('/:id')
+router.get('/:id', async(req, res)=>{
+
+})
 
 module.exports = router
