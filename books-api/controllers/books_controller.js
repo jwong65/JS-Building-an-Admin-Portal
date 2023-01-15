@@ -70,7 +70,29 @@ router.get('/:id', (req, res)=>{
                 message:'404 Error'
             })
         })
+})
+router.put(':/id', (req,res)=>{
+    Book.findByIdAndUpdate(req.params.id, req.body)
+        .then(()=>{
+            res.redirect('/books')
+        })
+        .catch(err=>{
+            res.status('404').json({
+                message:'404 Error'
+            })
+        })
+})
 
+router.delete('/:id/delete', (req, res)=>{
+    Book.findByIdAndDelete(req.params.id)
+    .then(bakerDelete=>{
+        res.status(303).redirect('/')
+    })
+    .catch(err=>{
+        res.status('404').json({
+            message:'404 Error'
+        })
+    })
 })
 
 module.exports = router
