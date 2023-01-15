@@ -1,11 +1,13 @@
 const mongoose = require('mongoose')
+const { Schema } = mongoose
 
-let bookSchema = new mongoose.Schema({
+const bookSchema = new Schema({
     title: String,
     description: String,
     year: Number,
     quantity: Number,
     imageURL: String
-}, {toJSON:{virtuals: true}})
+})
 
-module.exports = mongoose.model('Book', bookSchema)
+const Book = mongoose.model('Book', bookSchema)
+module.exports = Book

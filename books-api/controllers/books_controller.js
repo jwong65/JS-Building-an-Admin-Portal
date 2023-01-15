@@ -1,8 +1,8 @@
 const router = require('express').Router()
 
-const db = require('../models/book')
+const Book = require('../models/book.js')
 
-books.get('/seed', (req, res) => {
+router.get('/seed', (req, res) => {
     Book.insertMany([{
         "title": "The Shinobi Initiative",
         "description": "The reality-bending adventures of a clandestine service agency in the year 2166",
@@ -39,19 +39,27 @@ books.get('/seed', (req, res) => {
         }))
 })
 
-router.get('/', async (req, res)=>{
-    db.Book.find()
-    .then(foundBook=>{
-        res.json(foundBook)
-    })
-    .catch(err=>{
-        res.status('404').json({
-            message: '404 Error'
+router.get('/', (req, res)=>{
+    Book.find()
+        .then(foundBook=>{
+            res.json(foundBook)
         })
-    })
+    // db.Book.find()
+    // .then(foundBook=>{
+    //     res.json(foundBook)
+    // })
+    // .catch(err=>{
+    //     res.status('404').json({
+    //         message: '404 Error'
+    //     })
+    // })
 })
 
-router.get('/:id', async(req, res)=>{
+router.get('/:id', (req, res)=>{
+    Book.findById(req.params.id)
+        .then(foundBook=>{
+            res.json(foundBook)
+        })
 
 })
 
