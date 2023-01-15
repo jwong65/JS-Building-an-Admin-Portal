@@ -44,6 +44,11 @@ router.get('/', (req, res)=>{
         .then(foundBook=>{
             res.json(foundBook)
         })
+        .catch(err=>{
+            res.status('404').json({
+                message:'404 Error'
+            })
+        })
     // db.Book.find()
     // .then(foundBook=>{
     //     res.json(foundBook)
@@ -59,6 +64,11 @@ router.get('/:id', (req, res)=>{
     Book.findById(req.params.id)
         .then(foundBook=>{
             res.json(foundBook)
+        })
+        .catch(err=>{
+            res.status('404').json({
+                message:'404 Error'
+            })
         })
 
 })
