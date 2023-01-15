@@ -4,3 +4,5 @@ const app = express()
 app.get('/', (req, res)=>{
     res.send('Testing')
 })
+
+app.listen(process.env.PORT)
