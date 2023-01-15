@@ -8,4 +8,6 @@ app.get('/', (req, res)=>{
 
 app.use(express.json())
 
+app.use('/books', require('./controllers/books_controller'))
+
 app.listen(process.env.PORT)
